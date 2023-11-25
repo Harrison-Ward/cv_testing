@@ -4,8 +4,6 @@
 
 #include <opencv2/opencv.hpp>
 
-cv::Mat convert_to_greyscale(const cv::Mat& input_image);
-
-void luminosity_to_ascii(cv::Mat& input_image, std::vector<std::string>& output_ascii, const std::string grey_scale);
+void image_to_ascii(cv::Mat& input_image, std::string output_file_path, int kernel_size, const std::string grey_scale);
 
 #endif // IMAGE_PROCESSING_H
