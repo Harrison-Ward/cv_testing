@@ -13,22 +13,27 @@ void image_to_ascii(cv::Mat &input_image, std::string output_file_path, int kern
     cv::Size kernel_dimensions(kernel_size, kernel_size);
 
     // convert image to luminosity matrix, i.e., matrix of averaged brightness values
-    cv::boxFilter(input_image, luminosity_matrix, -1, kernel_dimensions);
+    // cv::boxFilter(input_image, luminosity_matrix, -1, kernel_dimensions);
+    cv::blur(input_image, luminosity_matrix, kernel_dimensions);
 
     // loop over the image and map brightness values to ascii characters
     std::vector<std::string> output_ascii;
+    std::stringstream pixel_stream;
 
     std::ofstream output_file(output_file_path);
     for (int y = 0; y < input_image.cols; ++y)
     {
         std::string line;
+        line.reserve(input_image.cols);
+
         for (int x = 0; x < input_image.cols; ++x)
         {
             unsigned char brightness_value = input_image.at<unsigned char>(y, x);
-            char ascii_value = grey_scale[static_cast<int>((brightness_value * 69) / 255)];
+            unsigned char ascii_value = grey_scale[static_cast<int>((brightness_value * 69) / 255)];
             line += ascii_value;
         }
-        output_file << line << "\n";
+        pixel_stream << line << "\n";
     }
+    output_file << pixel_stream.str();
     output_file.close();
 }
