@@ -1,6 +1,7 @@
 // image_processing.cpp
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
+#include <omp.h> 
 #include "image_processing.h"
 #include <unistd.h>
 #include <fstream>
@@ -13,14 +14,15 @@ void image_to_ascii(cv::Mat &input_image, std::string output_file_path, int kern
     cv::Size kernel_dimensions(kernel_size, kernel_size);
 
     // convert image to luminosity matrix, i.e., matrix of averaged brightness values
-    // cv::boxFilter(input_image, luminosity_matrix, -1, kernel_dimensions);
     cv::blur(input_image, luminosity_matrix, kernel_dimensions);
 
     // loop over the image and map brightness values to ascii characters
     std::vector<std::string> output_ascii;
     std::stringstream pixel_stream;
-
     std::ofstream output_file(output_file_path);
+
+    // multi-thread the pixel mapping
+    #pragma omp parallel for
     for (int y = 0; y < input_image.cols; ++y)
     {
         std::string line;
@@ -32,6 +34,7 @@ void image_to_ascii(cv::Mat &input_image, std::string output_file_path, int kern
             unsigned char ascii_value = grey_scale[static_cast<int>((brightness_value * 69) / 255)];
             line += ascii_value;
         }
+        #pragma omp critical
         pixel_stream << line << "\n";
     }
     output_file << pixel_stream.str();
