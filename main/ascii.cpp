@@ -1,9 +1,15 @@
 #include <opencv2/core.hpp>
+#include <opencv2/opencv.hpp>
+#include <opencv2/videoio.hpp>
 #include <opencv2/highgui.hpp>
 #include "image_processing.h"
 #include <unistd.h>
 #include <fstream>
+#include <iostream>
+
+
 using namespace std;
+using namespace cv;
 
 int main(int argc, char *argv[])
 {
@@ -15,32 +21,32 @@ int main(int argc, char *argv[])
     }
 
     // ascii conversion grey scale
-    std::string g_scale = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
+    string g_scale = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
 
     // read in images from the file paths provided in the argument vector
-    std::vector<cv::Mat> images;
+    vector<Mat> images;
     for (int i = 1; i < argc; i++)
     {
         // define grey scale map
-        std::string g_scale = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
+        // string g_scale = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
 
         // measure load time
-        auto start_load = std::chrono::high_resolution_clock::now();
+        auto start_load = chrono::high_resolution_clock::now();
 
-        cv::Mat img = cv::imread(argv[i], cv::IMREAD_GRAYSCALE);
+        Mat img = imread(argv[i], IMREAD_GRAYSCALE);
         if (img.empty())
         {
-            std::cerr << "Error: Image at " << argv[i] << " could not be loaded." << std::endl;
+            std::cerr << "Error: Image at " << argv[i] << " could not be loaded." << endl;
             continue; // Skip this image and continue with the next one
         }
 
         // measure load time
-        auto end_load = std::chrono::high_resolution_clock::now();
-        auto load_duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_load - start_load).count();
+        auto end_load = chrono::high_resolution_clock::now();
+        auto load_duration = chrono::duration_cast<chrono::milliseconds>(end_load - start_load).count();
         std::cout << "\n image loaded in " << load_duration << " miliseconds" << endl;
 
         // resize the image to aid display
-        cv::resize(img, img, cv::Size(), 0.25, 0.25);
+        cv::resize(img, img, Size(), 0.25, 0.25);
         
         // create the output file path based on the name of the input image
         auto file_name = static_cast<string>(argv[i]);
@@ -50,13 +56,13 @@ int main(int argc, char *argv[])
         output_file_path += ".txt";
 
         // convert the image to ACII and write it to the output folder, time it
-        auto start = std::chrono::high_resolution_clock::now();
+        auto start = chrono::high_resolution_clock::now();
         image_to_ascii(img, output_file_path, 15, g_scale);
-        auto end = std::chrono::high_resolution_clock::now();
+        auto end = chrono::high_resolution_clock::now();
 
         // display time to generate
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-        std::cout << output_file_path << "generated in: " << duration << " miliseconds" << endl;
+        auto duration = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+        cout << output_file_path << "generated in: " << duration << " miliseconds" << endl;
     }
     return 0;
 }

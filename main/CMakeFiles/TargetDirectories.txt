@@ -1,0 +1,4 @@
+/Users/harrisonward/Desktop/CS/Git/vision/main/CMakeFiles/ascii.dir
+/Users/harrisonward/Desktop/CS/Git/vision/main/CMakeFiles/ascii_video_filter.dir
+/Users/harrisonward/Desktop/CS/Git/vision/main/CMakeFiles/edit_cache.dir
+/Users/harrisonward/Desktop/CS/Git/vision/main/CMakeFiles/rebuild_cache.dir
