@@ -14,6 +14,7 @@
 void image_to_ascii(cv::Mat& input_image, std::string output_file_path, int kernel_size, const std::string grey_scale);
 // void ascii_display(const std::string& ascii_frame, const std::string& output_file_path);
 void ascii_display(const std::string& ascii_frame);
-void frame_to_ascii(cv::Mat &input_image, int kernel_size, const std::string grey_scale);
+std::string frame_to_ascii(cv::Mat &input_image, int kernel_size, const std::string grey_scale, const int grey_scale_length);
+void frames_per_second(const std::chrono::time_point<std::chrono::high_resolution_clock> start, const std::chrono::time_point<std::chrono::high_resolution_clock> stop);
 
 #endif // IMAGE_PROCESSING_H

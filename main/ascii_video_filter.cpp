@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
         }
 
         // Convert frame to ASCII
-        frame_to_ascii(frame, 500, g_scale);
+        frame_to_ascii(frame, 500, g_scale, 69);
         system("clear");
     }    
     return 0;

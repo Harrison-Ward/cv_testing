@@ -163,7 +163,7 @@ ascii: /usr/local/lib/libopencv_flann.4.8.1.dylib
 ascii: /usr/local/lib/libopencv_photo.4.8.1.dylib
 ascii: /usr/local/lib/libopencv_imgproc.4.8.1.dylib
 ascii: /usr/local/lib/libopencv_core.4.8.1.dylib
-ascii: /usr/local/Cellar/llvm/17.0.6/lib/libomp.dylib
+ascii: /usr/local/opt/libomp/lib/libomp.dylib
 ascii: CMakeFiles/ascii.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/harrisonward/Desktop/CS/Git/vision/main/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ascii"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ascii.dir/link.txt --verbose=$(VERBOSE)

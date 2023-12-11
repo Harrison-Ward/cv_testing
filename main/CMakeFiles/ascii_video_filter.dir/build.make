@@ -143,6 +143,9 @@ ascii_video_filter: /usr/local/lib/libopencv_wechat_qrcode.4.8.1.dylib
 ascii_video_filter: /usr/local/lib/libopencv_xfeatures2d.4.8.1.dylib
 ascii_video_filter: /usr/local/lib/libopencv_xobjdetect.4.8.1.dylib
 ascii_video_filter: /usr/local/lib/libopencv_xphoto.4.8.1.dylib
+ascii_video_filter: /usr/local/lib/libsfml-graphics.2.6.1.dylib
+ascii_video_filter: /usr/local/lib/libsfml-window.2.6.1.dylib
+ascii_video_filter: /usr/local/lib/libsfml-system.2.6.1.dylib
 ascii_video_filter: /usr/local/lib/libopencv_shape.4.8.1.dylib
 ascii_video_filter: /usr/local/lib/libopencv_highgui.4.8.1.dylib
 ascii_video_filter: /usr/local/lib/libopencv_datasets.4.8.1.dylib
@@ -163,7 +166,7 @@ ascii_video_filter: /usr/local/lib/libopencv_flann.4.8.1.dylib
 ascii_video_filter: /usr/local/lib/libopencv_photo.4.8.1.dylib
 ascii_video_filter: /usr/local/lib/libopencv_imgproc.4.8.1.dylib
 ascii_video_filter: /usr/local/lib/libopencv_core.4.8.1.dylib
-ascii_video_filter: /usr/local/Cellar/llvm/17.0.6/lib/libomp.dylib
+ascii_video_filter: /usr/local/opt/libomp/lib/libomp.dylib
 ascii_video_filter: CMakeFiles/ascii_video_filter.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/harrisonward/Desktop/CS/Git/vision/main/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ascii_video_filter"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ascii_video_filter.dir/link.txt --verbose=$(VERBOSE)

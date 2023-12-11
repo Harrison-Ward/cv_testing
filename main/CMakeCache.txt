@@ -94,7 +94,7 @@ CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 CMAKE_DLLTOOL:FILEPATH=/usr/local/opt/llvm/bin/llvm-dlltool
 
 //Flags used by the linker during all build types.
-CMAKE_EXE_LINKER_FLAGS:STRING=
+CMAKE_EXE_LINKER_FLAGS:STRING=-L/usr/local/opt/libomp/lib
 
 //Flags used by the linker during DEBUG builds.
 CMAKE_EXE_LINKER_FLAGS_DEBUG:STRING=
@@ -128,7 +128,7 @@ CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make
 
 //Flags used by the linker during the creation of modules during
 // all build types.
-CMAKE_MODULE_LINKER_FLAGS:STRING=
+CMAKE_MODULE_LINKER_FLAGS:STRING=-L/usr/local/opt/libomp/lib
 
 //Flags used by the linker during the creation of modules during
 // DEBUG builds.
@@ -183,7 +183,7 @@ CMAKE_READELF:FILEPATH=/usr/local/opt/llvm/bin/llvm-readelf
 
 //Flags used by the linker during the creation of shared libraries
 // during all build types.
-CMAKE_SHARED_LINKER_FLAGS:STRING=
+CMAKE_SHARED_LINKER_FLAGS:STRING=-L/usr/local/opt/libomp/lib
 
 //Flags used by the linker during the creation of shared libraries
 // during DEBUG builds.
@@ -256,7 +256,13 @@ OpenMP_C_FLAGS:STRING=-fopenmp=libomp
 OpenMP_C_LIB_NAMES:STRING=omp
 
 //Path to the omp library for OpenMP
-OpenMP_omp_LIBRARY:FILEPATH=/usr/local/Cellar/llvm/17.0.6/lib/libomp.dylib
+OpenMP_omp_LIBRARY:FILEPATH=/usr/local/opt/libomp/lib/libomp.dylib
+
+//The directory containing a CMake configuration file for SFML.
+SFML_DIR:PATH=/usr/local/lib/cmake/SFML
+
+//Path to a file.
+SFML_DOC_DIR:PATH=/usr/local/share/doc/SFML
 
 
 ########################
@@ -419,9 +425,9 @@ FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr/local/Cellar/opencv/4.8.1_5][
 //Details about finding OpenMP
 FIND_PACKAGE_MESSAGE_DETAILS_OpenMP:INTERNAL=[TRUE][TRUE][c ][v5.1()]
 //Details about finding OpenMP_C
-FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_C:INTERNAL=[-fopenmp=libomp][/usr/local/Cellar/llvm/17.0.6/lib/libomp.dylib][v5.1()]
+FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_C:INTERNAL=[-fopenmp=libomp][/usr/local/opt/libomp/lib/libomp.dylib][v5.1()]
 //Details about finding OpenMP_CXX
-FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_CXX:INTERNAL=[-fopenmp=libomp][/usr/local/Cellar/llvm/17.0.6/lib/libomp.dylib][v5.1()]
+FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_CXX:INTERNAL=[-fopenmp=libomp][/usr/local/opt/libomp/lib/libomp.dylib][v5.1()]
 //Result of TRY_COMPILE
 OpenMP_COMPILE_RESULT_CXX_fopenmplibomp:INTERNAL=TRUE
 //Result of TRY_COMPILE

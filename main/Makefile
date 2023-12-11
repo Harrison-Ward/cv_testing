@@ -142,6 +142,19 @@ ascii_video_filter/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii_video_filter.dir/build.make CMakeFiles/ascii_video_filter.dir/build
 .PHONY : ascii_video_filter/fast
 
+#=============================================================================
+# Target rules for targets named ascii_gui
+
+# Build rule for target.
+ascii_gui: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ascii_gui
+.PHONY : ascii_gui
+
+# fast build rule for target.
+ascii_gui/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii_gui.dir/build.make CMakeFiles/ascii_gui.dir/build
+.PHONY : ascii_gui/fast
+
 ascii.o: ascii.cpp.o
 .PHONY : ascii.o
 
@@ -165,6 +178,30 @@ ascii.s: ascii.cpp.s
 ascii.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii.dir/build.make CMakeFiles/ascii.dir/ascii.cpp.s
 .PHONY : ascii.cpp.s
+
+ascii_gui.o: ascii_gui.cpp.o
+.PHONY : ascii_gui.o
+
+# target to build an object file
+ascii_gui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii_gui.dir/build.make CMakeFiles/ascii_gui.dir/ascii_gui.cpp.o
+.PHONY : ascii_gui.cpp.o
+
+ascii_gui.i: ascii_gui.cpp.i
+.PHONY : ascii_gui.i
+
+# target to preprocess a source file
+ascii_gui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii_gui.dir/build.make CMakeFiles/ascii_gui.dir/ascii_gui.cpp.i
+.PHONY : ascii_gui.cpp.i
+
+ascii_gui.s: ascii_gui.cpp.s
+.PHONY : ascii_gui.s
+
+# target to generate assembly for a file
+ascii_gui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii_gui.dir/build.make CMakeFiles/ascii_gui.dir/ascii_gui.cpp.s
+.PHONY : ascii_gui.cpp.s
 
 ascii_video_filter.o: ascii_video_filter.cpp.o
 .PHONY : ascii_video_filter.o
@@ -197,6 +234,7 @@ image_processing.o: image_processing.cpp.o
 image_processing.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii.dir/build.make CMakeFiles/ascii.dir/image_processing.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii_video_filter.dir/build.make CMakeFiles/ascii_video_filter.dir/image_processing.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii_gui.dir/build.make CMakeFiles/ascii_gui.dir/image_processing.cpp.o
 .PHONY : image_processing.cpp.o
 
 image_processing.i: image_processing.cpp.i
@@ -206,6 +244,7 @@ image_processing.i: image_processing.cpp.i
 image_processing.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii.dir/build.make CMakeFiles/ascii.dir/image_processing.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii_video_filter.dir/build.make CMakeFiles/ascii_video_filter.dir/image_processing.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii_gui.dir/build.make CMakeFiles/ascii_gui.dir/image_processing.cpp.i
 .PHONY : image_processing.cpp.i
 
 image_processing.s: image_processing.cpp.s
@@ -215,6 +254,7 @@ image_processing.s: image_processing.cpp.s
 image_processing.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii.dir/build.make CMakeFiles/ascii.dir/image_processing.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii_video_filter.dir/build.make CMakeFiles/ascii_video_filter.dir/image_processing.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascii_gui.dir/build.make CMakeFiles/ascii_gui.dir/image_processing.cpp.s
 .PHONY : image_processing.cpp.s
 
 # Help Target
@@ -226,10 +266,14 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ascii"
+	@echo "... ascii_gui"
 	@echo "... ascii_video_filter"
 	@echo "... ascii.o"
 	@echo "... ascii.i"
 	@echo "... ascii.s"
+	@echo "... ascii_gui.o"
+	@echo "... ascii_gui.i"
+	@echo "... ascii_gui.s"
 	@echo "... ascii_video_filter.o"
 	@echo "... ascii_video_filter.i"
 	@echo "... ascii_video_filter.s"
