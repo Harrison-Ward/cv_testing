@@ -74,6 +74,7 @@ int main()
     // open the window for display
     sf::RenderWindow window(sf::VideoMode(ascii_width, ascii_height), "ASCII Art Display");
 
+    // init frames counter and timer
     int frames = 0;
     auto begin = chrono::high_resolution_clock::now();
     while (window.isOpen())
@@ -89,28 +90,16 @@ int main()
         // wipe window
         window.clear();
 
-        capture >> frame;
+        capture.read(frame);
         if (frame.empty())
         {
             cerr << "Error, frame not found.\n";
             break;
         }
 
-        capture.read(frame);
-        // check if we succeeded
-        if (frame.empty()) {
-            cerr << "ERROR! blank frame grabbed\n";
-            break;
-        }
-        // show live and wait for a key with timeout long enough to show images
-        imshow("Live", frame);
-        if (waitKey(5) >= 0)
-            break;
-
         // downsize and greyscale the frame
         Mat resized_frame;
         resize(frame, resized_frame, cv::Size(resized_width, resized_height));
-
         cvtColor(resized_frame, resized_frame, cv::COLOR_BGR2GRAY);
 
         // Convert frame to ASCII
@@ -127,16 +116,13 @@ int main()
         frames_per_second(start, stop);
         frames++;
     }
-
     // measure total run time
     auto end = chrono::high_resolution_clock::now();
     auto run_time = chrono::duration_cast<chrono::seconds>(end - begin).count();
 
     // calculate average FPS
     auto average_fps = frames / (run_time);
-
     cout << "Average FPS: " << average_fps << endl;
-
 
     return 0;
 }
